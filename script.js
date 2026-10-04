@@ -1,12 +1,14 @@
-// उर्दू में खुदा और इंग्लिश में God के साथ स्पेशल नोट्स
+// 🔒 अपना सीक्रेट पासवर्ड यहाँ सेट करें (अभी यह sana123 है)
+const SECRET_PASSWORD = "sana123"; 
+
 const birthdayNotes = [
-    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے آپ کی زندگی کا هر لمحہ خوشیوں سے بھرا ہو، سالگرہ مبارک ثناء! 🎉</div>
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے آپ کی زندگی کا ہر لمحہ خوشیوں سے بھرا ہو، سالگرہ مبارک ثناء! 🎉</div>
      <div style="font-size: 15px; color: #555;">May God bless every moment of your life with endless happiness. Happy Birthday Sana! 💖</div>`,
     
     `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا آپ کی تمام نیک دعائیں قبول فرمائے اور آپ کو ہمیشہ سلامت رکھے۔ 🤲✨</div>
      <div style="font-size: 15px; color: #555;">May God accept all your pure wishes and protect you always. Beautiful day ahead! ⭐</div>`,
     
-    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">مسکراتی رہو آپ ہمیشہ، یہی دعا ہے ہماری۔ سالگرہ بہت بہت مبارک ہو! 🌹❤️</div>
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">مسکراتی رہو آپ ہمیشہ، یہی دعا है ہماری۔ سالگرہ بہت بہت مبارک ہو! 🌹❤️</div>
      <div style="font-size: 15px; color: #555;">Keep smiling always, that's my only prayer to God for you. Have a wonderful birthday!</div>`,
     
     `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے یہ سال آپ کی زندگی میں کامیابی، اچھی صحت اور ڈھیروں برکتیں لائے। 🎈</div>
@@ -15,51 +17,52 @@ const birthdayNotes = [
 
 const birthdayPhotos = ["Sana.jpg", "Sana.jpg", "Sana.jpg", "Sana.jpg"];
 let currentIdx = 0;
-let audioContext;
 let musicStarted = false;
+
+// पासवर्ड चेक करने का फंक्शन
+function checkPassword() {
+    const input = document.getElementById("passInput").value;
+    const errorMsg = document.getElementById("errorMsg");
+    const passwordScreen = document.getElementById("passwordScreen");
+    const mainContainer = document.getElementById("mainContainer");
+
+    if (input === SECRET_PASSWORD) {
+        // सही पासवर्ड डालने पर स्क्रीन गायब होगी और मुख्य पेज साफ दिखेगा
+        passwordScreen.style.opacity = "0";
+        passwordScreen.style.pointerEvents = "none";
+        
+        mainContainer.style.filter = "none";
+        mainContainer.style.opacity = "1";
+        
+        setTimeout(() => {
+            passwordScreen.style.display = "none";
+        }, 500);
+    } else {
+        // गलत पासवर्ड होने पर एरर दिखाओ
+        errorMsg.style.display = "block";
+        document.getElementById("passInput").value = ""; // इनपुट बॉक्स खाली करें
+    }
+}
 
 function showSurprise() {
     document.getElementById("surprise").style.display = "block";
-    playBirthdayTune(); // यह कोड सीधे ब्राउज़र के अंदर से ट्यून बजाएगा, कोई लिंक ब्लॉक नहीं होगा!
+    playRealMusic(); 
     burstFlowers();
     updateContent();
 }
 
-// 100% वर्किंग हैप्पी बर्थडे धुन का इन-बिल्ट कोड
-function playBirthdayTune() {
-    if (musicStarted) return;
-    musicStarted = true;
-
-    // ऑडियोContext चालू करना
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // हैप्पी बर्थडे के म्यूजिकल नोट्स और उनकी टाइमिंग
-    const notes = [
-        [261.63, 0.3], [261.63, 0.3], [293.66, 0.5], [261.63, 0.5], [349.23, 0.5], [329.63, 0.9],
-        [261.63, 0.3], [261.63, 0.3], [293.66, 0.5], [261.63, 0.5], [392.00, 0.5], [349.23, 0.9]
-    ];
-
-    let time = audioContext.currentTime;
-
-    notes.forEach(([frequency, duration]) => {
-        const oscillator = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-
-        oscillator.frequency.value = frequency;
-        oscillator.type = "sine"; // मीठी और सॉफ्ट धुन के लिए
-
-        // वॉल्यूम कंट्रोल (हल्की और प्यारी आवाज़)
-        gain.gain.setValueAtTime(0.12, time);
-        gain.gain.exponentialRampToValueAtTime(0.01, time + duration);
-
-        oscillator.connect(gain);
-        gain.connect(audioContext.destination);
-
-        oscillator.start(time);
-        oscillator.stop(time + duration);
-
-        time += duration + 0.06; // अगले नोट के बीच का गैप
-    });
+function playRealMusic() {
+    const music = document.getElementById("birthdayMusic");
+    if (music) {
+        music.muted = false;
+        let playPromise = music.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => { musicStarted = true; }).catch(err => {
+                music.volume = 1.0;
+                music.play();
+            });
+        }
+    }
 }
 
 function updateContent() {
@@ -72,11 +75,13 @@ function updateContent() {
 function nextNote() {
     currentIdx = (currentIdx + 1) % birthdayNotes.length;
     updateContent();
+    playRealMusic();
 }
 
 function prevNote() {
     currentIdx = (currentIdx - 1 + birthdayNotes.length) % birthdayNotes.length;
     updateContent();
+    playRealMusic();
 }
 
 // 3D स्टाइल में फूल गिरने का एनीमेशन
