@@ -5,8 +5,7 @@
 }
 
 body {
-    /* एस्थेटिक रियल पिंक रोज़ेज़ (गुलाब) की हाई-क्वालिटी बैकग्राउंड इमेज */
-    background-image: linear-gradient(rgba(255, 240, 245, 0.55), rgba(255, 240, 245, 0.55)), url('https://unsplash.com');
+    background-image: linear-gradient(rgba(255, 240, 245, 0.45), rgba(255, 240, 245, 0.45)), url('https://unsplash.com');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -19,18 +18,21 @@ body {
     overflow-x: hidden;
 }
 
+/* मुख्य सफ़ेद कार्ड को सबसे आकर्षक बनाने का कोड */
 .container {
     width: 90%;
     max-width: 420px;
     padding: 40px 25px;
     text-align: center;
-    /* एकदम प्रीमियम फ्रॉस्टेड ग्लास लुक */
-    background: rgba(255, 255, 255, 0.88); 
+    /* एकदम चमकदार, फ्रॉस्टेड वाइट ग्लास इफेक्ट */
+    background: rgba(255, 255, 255, 0.92); 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(216, 27, 96, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.7);
+    /* जादुई गुलाबी चमक (Glowing Neon Box Shadow) */
+    box-shadow: 0 0 25px rgba(255, 71, 87, 0.25), 0 20px 45px rgba(216, 27, 96, 0.2);
+    /* चमकदार बॉर्डर जो इसे आकर्षक बनाएगा */
+    border: 3px solid rgba(255, 105, 180, 0.6); 
     position: relative;
     z-index: 10;
 }
@@ -41,6 +43,7 @@ h1 {
     font-weight: 700;
     margin-bottom: 10px;
     letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(255, 71, 87, 0.3);
 }
 
 h2 {
@@ -54,14 +57,16 @@ h2 {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
+    /* फोटो के चारों तरफ गुलाबी रिंग */
+    border: 5px solid #ff6b81;
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
     margin: 15px 0;
 }
 
 .message {
-    color: #4a4a4a;
+    color: #333;
     font-size: 16px;
+    font-weight: 500;
     line-height: 1.6;
     margin-bottom: 25px;
 }
@@ -75,24 +80,26 @@ button {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
     transition: all 0.3s ease;
 }
 
 button:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 12px 30px rgba(255, 71, 87, 0.6);
+    box-shadow: 0 12px 30px rgba(255, 71, 87, 0.7);
 }
 
+/* नीचे खुला हुआ सरप्राइज मैसेज बॉक्स - अब यह और आकर्षक चमकेगा */
 #surprise {
     margin-top: 25px;
     font-size: 18px;
     font-weight: bold;
     color: #d81b60;
     line-height: 1.6;
-    background: rgba(255, 240, 245, 0.95);
+    /* हल्का गुलाबी चमकदार बैकग्राउंड */
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
     padding: 20px;
     border-radius: 20px;
-    border: 1px dashed #ffb6c1;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+    border: 2px dashed #ff4757;
+    box-shadow: inset 0 2px 10px rgba(255, 71, 87, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
 }
