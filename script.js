@@ -1,14 +1,13 @@
-// 🔒 अपना सीक्रेट पासवर्ड यहाँ सेट करें (अभी यह sana123 है)
 const SECRET_PASSWORD = "sana123"; 
 
 const birthdayNotes = [
-    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے آپ کی زندگی کا ہر لمحہ خوشیوں سے بھرا ہو، سالگرہ مبارک ثناء! 🎉</div>
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے آپ کی زندگی का हर لمحہ خوشیوں سے بھرا ہو، ! 🎉</div>
      <div style="font-size: 15px; color: #555;">May God bless every moment of your life with endless happiness. Happy Birthday Sana! 💖</div>`,
     
     `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا آپ کی تمام نیک دعائیں قبول فرمائے اور آپ کو ہمیشہ سلامت رکھے۔ 🤲✨</div>
      <div style="font-size: 15px; color: #555;">May God accept all your pure wishes and protect you always. Beautiful day ahead! ⭐</div>`,
     
-    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">مسکراتی رہو آپ ہمیشہ، یہی دعا है ہماری۔ سالگرہ بہت بہت مبارک ہو! 🌹❤️</div>
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">مسکراتی رہو آپ ہمیشہ، یہی دعا ہے ہماری। سالگرہ بہت بہت مبارک ہو! 🌹❤️</div>
      <div style="font-size: 15px; color: #555;">Keep smiling always, that's my only prayer to God for you. Have a wonderful birthday!</div>`,
     
     `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے یہ سال آپ کی زندگی میں کامیابی، اچھی صحت اور ڈھیروں برکتیں لائے। 🎈</div>
@@ -19,28 +18,43 @@ const birthdayPhotos = ["Sana.jpg", "Sana.jpg", "Sana.jpg", "Sana.jpg"];
 let currentIdx = 0;
 let musicStarted = false;
 
-// पासवर्ड चेक करने का फंक्शन
 function checkPassword() {
     const input = document.getElementById("passInput").value;
     const errorMsg = document.getElementById("errorMsg");
+    const loginWrapper = document.querySelector(".login-box");
     const passwordScreen = document.getElementById("passwordScreen");
+    const heartArrowScreen = document.getElementById("heartArrowScreen");
     const mainContainer = document.getElementById("mainContainer");
+    const passInput = document.getElementById("passInput");
 
     if (input === SECRET_PASSWORD) {
-        // सही पासवर्ड डालने पर स्क्रीन गायब होगी और मुख्य पेज साफ दिखेगा
-        passwordScreen.style.opacity = "0";
-        passwordScreen.style.pointerEvents = "none";
+        errorMsg.style.display = "none";
         
-        mainContainer.style.filter = "none";
-        mainContainer.style.opacity = "1";
+        // 1. लॉगिन बॉक्स छिपाओ और जादुई तीर-दिल स्क्रीन खोलो
+        passwordScreen.style.display = "none";
+        heartArrowScreen.style.display = "flex";
         
+        // 2. एनीमेशन पूरा होने के लिए 1.5 सेकंड का समय दें, फिर मुख्य पेज खोलो
         setTimeout(() => {
-            passwordScreen.style.display = "none";
-        }, 500);
+            heartArrowScreen.style.opacity = "0";
+            heartArrowScreen.style.transition = "all 0.5s ease";
+            
+            mainContainer.style.filter = "none";
+            mainContainer.style.opacity = "1";
+            
+            setTimeout(() => {
+                heartArrowScreen.style.display = "none";
+            }, 500);
+        }, 1500); // 1.5 सेकंड तक तीर दिल पर जाता हुआ दिखेगा
+        
     } else {
-        // गलत पासवर्ड होने पर एरर दिखाओ
+        loginWrapper.classList.remove("shake-animation");
+        void loginWrapper.offsetWidth;
+        loginWrapper.classList.add("shake-animation");
+        
+        passInput.style.borderColor = "#ff4757";
         errorMsg.style.display = "block";
-        document.getElementById("passInput").value = ""; // इनपुट बॉक्स खाली करें
+        passInput.value = "";
     }
 }
 
@@ -84,9 +98,18 @@ function prevNote() {
     playRealMusic();
 }
 
-// 3D स्टाइल में फूल गिरने का एनीमेशन
 document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => createFlowerElement(false), 250);
+    
+    const passInput = document.getElementById("passInput");
+    if(passInput) {
+        passInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkPassword();
+            }
+        });
+    }
 });
 
 function burstFlowers() {
