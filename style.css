@@ -1,107 +1,102 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
-  overflow: hidden;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://unsplash.com');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
-  width: 90%;
-  max-width: 650px;
-  padding: 45px 25px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 30px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  position: relative;
+    width: 90%;
+    max-width: 450px;
+    padding: 40px 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 71, 87, 0.15);
+    border: 1px solid rgba(255, 182, 193, 0.5);
+    position: relative;
 }
 
 h1 {
-  color: #ff3f81;
-  font-size: 45px;
-  margin-bottom: 15px;
-  animation: bounce 1.5s infinite;
+    color: #ff4757;
+    font-size: 36px;
+    margin-bottom: 15px;
+    animation: bounce 1.5s infinite;
 }
 
 h2 {
-  color: #d63384;
-  font-size: 32px;
-  margin-bottom: 18px;
+    color: #ff6b81;
+    font-size: 26px;
+    margin-bottom: 15px;
 }
 
 .sana-photo {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 6px solid white;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  margin: 5px 0 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin: 15px 0;
 }
 
 .message {
-  color: #555;
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: 20px;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .cake {
-  font-size: 80px;
-  margin: 15px 0;
-  animation: cake 1.5s infinite alternate;
+    font-size: 70px;
+    margin: 15px 0;
+    animation: cake 1.5s infinite alternate;
 }
 
 button {
-  border: none;
-  padding: 15px 28px;
-  border-radius: 30px;
-  background: #ff4081;
-  color: white;
-  font-size: 17px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.4);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 71, 87, 0.3);
+    transition: transform 0.2s;
 }
 
 button:hover {
-  transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 #surprise {
-  margin-top: 25px;
-  color: #e91e63;
-  font-size: 22px;
-  font-weight: bold;
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4757;
+    line-height: 1.6;
 }
-
-.balloon {
-  position: fixed;
-  font-size: 55px;
-  animation: float 4s ease-in-out infinite;
-}
-
-.balloon:nth-child(1) { left: 5%; top: 15%; }
-.balloon:nth-child(2) { right: 5%; top: 20%; }
-.balloon:nth-child(3) { left: 12%; bottom: 10%; }
 
 @keyframes bounce {
-  50% { transform: translateY(-10px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 @keyframes cake {
-  from { transform: scale(1); }
-  to { transform: scale(1.12); }
-}
-
-@keyframes float {
-  50% { transform: translateY(-30px) rotate(8deg); }
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
 }
