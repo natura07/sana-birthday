@@ -1,5 +1,3 @@
-@import url('https://googleapis.com');
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,13 +5,8 @@
 }
 
 body {
-    /* 🌹 बैकग्राउंड में असली लाल गुलाबों की एक बेहद आलीशान, रोमांटिक तस्वीर */
-    background-image: linear-gradient(rgba(44, 4, 15, 0.5), rgba(44, 4, 15, 0.5)), url('https://unsplash.com');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    font-family: 'Montserrat', sans-serif;
+    background: #0f0c1b; /* रील जैसा डार्क प्रीमियम बैकग्राउंड */
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,161 +14,210 @@ body {
     overflow-x: hidden;
 }
 
-/* 🏆 एकदम रॉयल और कीमती लॉगिन कार्ड (Premium Velvet Glass) */
+/* 🌌 रील का बैकग्राउंड लाइटिंग इफ़ेक्ट */
+.auth-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0f0c1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-blur-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: 1;
+    animation: floatLights 6s infinite alternate ease-in-out;
+}
+
+.pink-circle { background: #ff4757; top: -50px; left: -50px; }
+.purple-circle { background: #9b5de5; bottom: -50px; right: -50px; animation-delay: 3s; }
+
+@keyframes floatLights {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 40px) scale(1.2); }
+}
+
+/* 💎 प्रीमियम ग्लास लॉगिन कंटेनर */
 .login-box {
-    width: 90%;
-    max-width: 380px;
-    padding: 45px 30px;
+    width: 88%;
+    max-width: 360px;
+    padding: 40px 25px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.93);
-    border-radius: 20px;
-    /* सुनहरी और मखमली चमक (Royal Gold Box Shadow) */
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), 0 0 0 4px rgba(212, 175, 55, 0.3);
-    /* असली गोल्डन बॉर्डर */
-    border: 2px solid #d4af37; 
-    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    transform: translateY(20px);
     opacity: 0;
-    animation: zoomInBox 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation: fadeInUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-/* 🏹 दिल का आइकॉन अब एक रॉयल सिंबल की तरह दिखेगा */
-.heart-icon {
-    font-size: 45px;
-    color: #c41e3a;
-    margin-bottom: 20px;
-    animation: pulseHeart 1.2s infinite alternate;
+.brand-heart {
+    font-size: 50px;
+    margin-bottom: 15px;
+    animation: heartbeat 1.2s infinite alternate;
 }
 
-@keyframes pulseHeart {
-    from { transform: scale(1); filter: drop-shadow(0 0 5px rgba(196, 30, 58, 0.5)); }
-    to { transform: scale(1.1); filter: drop-shadow(0 0 15px rgba(196, 30, 58, 0.9)); }
+.urdu-title {
+    font-size: 18px;
+    line-height: 2.3;
+    color: #ff6b81;
+    margin-bottom: 8px;
 }
 
-/* इनपुट बॉक्स अब बहुत ही साफ़ और प्रोफेशनल दिखेगा */
+.english-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* 🎯 रील जैसा इनपुट लाइन एनीमेशन */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
 input[type="password"] {
     width: 100%;
-    padding: 14px 20px;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    border-radius: 8px;
-    border: 2px solid #cccccc;
-    margin-bottom: 25px;
+    padding: 12px 10px;
+    font-size: 16px;
+    color: white;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     text-align: center;
     outline: none;
     transition: all 0.3s ease;
 }
 
-input[type="password"]:focus {
-    border-color: #d4af37;
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff4757, #9b5de5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 📱 मुख्य कंटेंट कंटेनर (लॉगिन के बाद जो खुलेगा) */
-.container {
-    width: 90%;
-    max-width: 430px;
-    padding: 45px 30px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.96); 
-    border-radius: 24px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-    border: 3px solid #d4af37; /* रॉयल गोल्ड बॉर्डर */
-    position: relative;
-    z-index: 10;
+input[type="password"]:focus ~ .input-line {
+    width: 100%;
+    left: 0;
 }
 
-h1 {
-    font-family: 'Cinzel', serif;
-    color: #800020; /* मखमली बरगंडी रंग */
-    font-size: 34px;
-    font-weight: 700;
-    margin-bottom: 5px;
-    letter-spacing: 2px;
-}
-
-h2 {
-    font-family: 'Cinzel', serif;
-    color: #d4af37; /* सुनहरी चमक */
-    font-size: 28px;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-}
-
-.sana-photo {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #d4af37;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-    margin: 15px 0;
-}
-
-.message {
-    color: #333333;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-/* 👑 रॉयल गोल्डन बटन */
-button {
+/* 🚀 मॉडर्न ग्लोइंग बटन */
+.btn-unlock, .btn-surprise {
     border: none;
-    padding: 15px 35px;
-    border-radius: 6px;
-    background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+    padding: 14px 30px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff4757, #9b5de5);
     color: white;
-    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(170, 124, 17, 0.4);
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+    width: 100%;
     transition: all 0.3s ease;
 }
 
-button:hover {
+.btn-unlock:hover {
+    box-shadow: 0 12px 25px rgba(255, 71, 87, 0.5);
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(170, 124, 17, 0.6);
 }
 
-/* 📜 खुला हुआ सरप्राइज नोट्स बॉक्स - एकदम मखमली लुक */
+.error-text {
+    color: #ff4757;
+    font-size: 13px;
+    margin-top: 15px;
+    display: none;
+    font-weight: 600;
+}
+
+/* 📱 मुख्य कंटेंट कंटेनर (सफल लॉगिन के बाद) */
+.container {
+    width: 90%;
+    max-width: 420px;
+    padding: 40px 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+h1 { color: #d81b60; font-size: 34px; font-weight: 700; margin-bottom: 5px; }
+h2 { color: #9b5de5; font-size: 26px; margin-bottom: 20px; }
+
+.sana-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ff6b81;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin: 15px 0;
+}
+
+.message { color: #333; font-size: 16px; font-weight: 500; line-height: 1.6; margin-bottom: 25px; }
+
 #surprise {
-    margin-top: 30px;
-    font-size: 17px;
-    color: #800020;
-    line-height: 1.8;
-    background: #fff9fa;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px dashed #d4af37;
-    box-shadow: inset 0 2px 8px rgba(0,0,0,0.03);
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #d81b60;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px dashed #ff4757;
 }
 
-/* एनीमेशन कीफ्रेम्स */
-@keyframes zoomInBox {
-    to { transform: scale(1); opacity: 1; }
+.nav-btn {
+    border: none;
+    padding: 8px 18px;
+    font-size: 14px;
+    background: #9b5de5;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
-.shake-animation {
-    animation: shakeBox 0.4s ease-in-out;
-}
+/* 🎬 कीफ्रेम एनीमेशन्स */
+@keyframes fadeInUp { to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes heartbeat { from { transform: scale(1); } to { transform: scale(1.1); } }
 
+.shake-animation { animation: shakeBox 0.4s ease-in-out; }
 @keyframes shakeBox {
     0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-8px); }
-    40%, 80% { transform: translateX(8px); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
 }
 
 .burst-sparkle {
     position: fixed;
     pointer-events: none;
     z-index: 10005;
-    animation: glitterFly 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+    animation: glitterFly 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
-
 @keyframes glitterFly {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
