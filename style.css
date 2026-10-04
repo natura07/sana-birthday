@@ -5,106 +5,90 @@
 }
 
 body {
-    /* सुंदर पेस्टल पिंक बैकग्राउंड और 3D फ्लावर/हार्ट जैसी फील देने वाला पैटर्न */
-    background-color: #ffeef2;
-    background-image: 
-        radial-gradient(#ffb6c1 20%, transparent 20%),
-        radial-gradient(#ffb6c1 20%, transparent 20%);
-    background-size: 40px 40px;
-    background-position: 0 0, 20px 20px;
-    font-family: 'Arial', sans-serif;
+    /* एक खूबसूरत रॉयल पिंक और पर्पल सॉफ्ट ग्रेडिएंट बैकग्राउंड */
+    background: linear-gradient(135deg, #ffeef2 0%, #ffd1dc 50%, #f3e5f5 100%);
+    font-family: 'Poppins', 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
     width: 90%;
-    max-width: 450px;
+    max-width: 420px;
     padding: 40px 25px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.92); /* हल्का पारदर्शी वाइट कार्ड */
-    backdrop-filter: blur(8px);
-    border-radius: 24px;
-    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
-    border: 2px solid #ffb6c1;
+    /* काँच जैसा इफेक्ट (Glassmorphism) जो बहुत प्रीमियम दिखता है */
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(255, 71, 87, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.6);
     position: relative;
+    z-index: 10; /* ताकि कार्ड फूलों के ऊपर रहे */
 }
 
 h1 {
-    color: #ff4757;
-    font-size: 34px;
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    animation: bounce 1.5s infinite;
+    color: #d81b60;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
 h2 {
-    color: #ff6b81;
-    font-size: 24px;
-    margin-bottom: 15px;
+    color: #e91e63;
+    font-size: 26px;
+    margin-bottom: 20px;
 }
 
 .sana-photo {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+    border: 5px solid white;
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
     margin: 15px 0;
 }
 
 .message {
-    color: #555;
-    font-size: 15px;
+    color: #4a4a4a;
+    font-size: 16px;
     line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.cake {
-    font-size: 65px;
-    margin: 15px 0;
-    animation: cake 1.5s infinite alternate;
+    margin-bottom: 25px;
 }
 
 button {
     border: none;
-    padding: 14px 28px;
-    border-radius: 30px;
+    padding: 16px 35px;
+    border-radius: 50px;
     background: linear-gradient(45deg, #ff4757, #ff6b81);
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
     transition: all 0.3s ease;
 }
 
 button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(255, 71, 87, 0.6);
 }
 
 #surprise {
     margin-top: 25px;
     font-size: 18px;
     font-weight: bold;
-    color: #ff2a6d;
+    color: #d81b60;
     line-height: 1.6;
-    background: #fff0f5;
-    padding: 15px;
-    border-radius: 15px;
+    background: rgba(255, 240, 245, 0.9);
+    padding: 20px;
+    border-radius: 20px;
     border: 1px dashed #ffb6c1;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-@keyframes cake {
-    from { transform: scale(1); }
-    to { transform: scale(1.08); }
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
 }
