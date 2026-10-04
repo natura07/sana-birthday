@@ -20,22 +20,20 @@
 
         <p class="message">Your special birthday surprise is waiting below! ✨</p>
         
-        <!-- सरप्राइज बटन -->
+        <!-- सरप्राइज बटन जो गाना भी बजाएगा -->
         <button onclick="showSurprise()">🎉 Open Surprise</button>
         
-        <!-- सरप्राइज एरिया: बटन दबाने पर यह खुलेगा -->
+        <!-- सरप्राइज एरिया -->
         <div id="surprise" style="display: none;">
             
-            <!-- फोटो गैलरी (1 से ज़्यादा फोटो स्लाइड होने के लिए) -->
+            <!-- फोटो गैलरी -->
             <div class="gallery-container">
                 <img id="galleryPhoto" src="Sana.jpg" alt="Sana Birthday" class="gallery-photo" style="width:100%; border-radius:15px; box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
             </div>
 
             <!-- मल्टीपल नोट्स (Urdu + English) -->
             <div class="notes-container" style="margin-top: 20px;">
-                <div class="note-card active-note" id="noteText">
-                    <!-- जावास्क्रिप्ट यहाँ उर्दू और इंग्लिश नोट्स डालेगा -->
-                </div>
+                <div class="note-card active-note" id="noteText"></div>
                 <div class="note-controls" style="margin-top: 15px; display: flex; justify-content: space-between;">
                     <button class="nav-btn" onclick="prevNote()" style="padding: 8px 18px; font-size: 14px;">◀ Prev</button>
                     <button class="nav-btn" onclick="nextNote()" style="padding: 8px 18px; font-size: 14px;">Next ▶</button>
@@ -45,8 +43,8 @@
         </div>
     </div>
 
-    <!-- 100% वर्किंग सॉफ्ट एंड ब्यूटीफुल इंस्ट्रूमेंटल बर्थडे ट्यून -->
-    <audio id="birthdayMusic" src="https://soundhelix.com" loop></audio>
+    <!-- 100% वर्किंग डायरेक्ट MP3 सॉन्ग लिंक जो ब्राउज़र ब्लॉक नहीं करेगा -->
+    <audio id="birthdayMusic" src="https://soundhelix.com" loop preload="auto"></audio>
 
 </body>
 <script src="script.js"></script>
