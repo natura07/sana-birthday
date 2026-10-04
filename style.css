@@ -5,8 +5,12 @@
 }
 
 body {
-    /* एक खूबसूरत रॉयल पिंक और पर्पल सॉफ्ट ग्रेडिएंट बैकग्राउंड */
-    background: linear-gradient(135deg, #ffeef2 0%, #ffd1dc 50%, #f3e5f5 100%);
+    /* एस्थेटिक रियल पिंक रोज़ेज़ (गुलाब) की हाई-क्वालिटी बैकग्राउंड इमेज */
+    background-image: linear-gradient(rgba(255, 240, 245, 0.55), rgba(255, 240, 245, 0.55)), url('https://unsplash.com');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     font-family: 'Poppins', 'Arial', sans-serif;
     display: flex;
     justify-content: center;
@@ -20,15 +24,15 @@ body {
     max-width: 420px;
     padding: 40px 25px;
     text-align: center;
-    /* काँच जैसा इफेक्ट (Glassmorphism) जो बहुत प्रीमियम दिखता है */
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    /* एकदम प्रीमियम फ्रॉस्टेड ग्लास लुक */
+    background: rgba(255, 255, 255, 0.88); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(255, 71, 87, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 50px rgba(216, 27, 96, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.7);
     position: relative;
-    z-index: 10; /* ताकि कार्ड फूलों के ऊपर रहे */
+    z-index: 10;
 }
 
 h1 {
@@ -86,7 +90,7 @@ button:hover {
     font-weight: bold;
     color: #d81b60;
     line-height: 1.6;
-    background: rgba(255, 240, 245, 0.9);
+    background: rgba(255, 240, 245, 0.95);
     padding: 20px;
     border-radius: 20px;
     border: 1px dashed #ffb6c1;
