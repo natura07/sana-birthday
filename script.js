@@ -1,44 +1,54 @@
-// 1. मल्टीपल विश नोट्स (आप यहाँ अपनी मर्जी से और लाइनें जोड़ सकते हैं)
+// उर्दू (खूबसूरत नास्तलीक़ स्टाइल) और इंग्लिश में मिक्स 4 स्पेशल नोट्स
 const birthdayNotes = [
-    "💖 You are a very special person! Once again, Happy Birthday Sana! 🎉",
-    "✨ भगवान करे आपकी ज़िंदगी में हमेशा खुशियाँ, हंसी और कामयाबी बनी रहे! ⭐",
-    "🌹 मुस्कुराती रहो आप हमेशा, यही दुआ है हमारी। आपके सारे सपने सच हों! ❤️",
-    "🎈 May this year bring you endless love, good health, and wonderful surprises!"
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے آپ کی زندگی کا ہر لمحہ خوشیوں سے بھرا ہو، سالگرہ مبارک ثناء! 🎉</div>
+     <div style="font-size: 15px; color: #555;">May Khuda bless every moment of your life with endless happiness. Happy Birthday Sana! 💖</div>`,
+    
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا آپ کی تمام نیک دعائیں قبول فرمائے اور آپ کو ہمیشہ سلامت رکھے۔ 🤲✨</div>
+     <div style="font-size: 15px; color: #555;">May Khuda accept all your pure wishes and protect you always. Beautiful day ahead! ⭐</div>`,
+    
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">مسکراتی رہو آپ ہمیشہ، یہی دعا ہے ہماری۔ سالگرہ بہت بہت مبارک ہو! 🌹❤️</div>
+     <div style="font-size: 15px; color: #555;">Keep smiling always, that's my only prayer to Khuda for you. Have a wonderful birthday!</div>`,
+    
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے یہ سال آپ کی زندگی میں کامیابی، اچھی صحت اور ڈھیروں برکتیں لائے۔ 🎈</div>
+     <div style="font-size: 15px; color: #555;">May Khuda fill this new year of your life with success, great health, and barakah!</div>`
 ];
 
-// 2. मल्टीपल फोटोज की लिस्ट (अगर आपके पास और फोटोज हैं, तो उनके नाम यहाँ जोड़ें, जैसे 'Sana2.jpg')
+// अगर भविष्य में आपके पास और तस्वीरें हों, तो यहाँ 'Sana2.jpg', 'Sana3.jpg' लिख सकते हैं। अभी यह आपकी पहली फोटो को ही लोड रखेगा।
 const birthdayPhotos = [
     "Sana.jpg", 
-    "Sana.jpg", // यहाँ आप अपनी दूसरी अपलोडेड फोटो का नाम लिख सकते हैं
-    "Sana.jpg"  // यहाँ आप तीसरी फोटो का नाम लिख सकते हैं
+    "Sana.jpg", 
+    "Sana.jpg",
+    "Sana.jpg"
 ];
 
 let currentIdx = 0;
 let musicStarted = false;
 
-// बटन दबाने पर सरप्राइज चालू करने का फंक्शन
 function showSurprise() {
     const surpriseDiv = document.getElementById("surprise");
-    surpriseDiv.style.display = "block"; // सरप्राइज बॉक्स को दिखाओ
+    surpriseDiv.style.display = "block";
     
-    // फूलों का धमाका और असली गाना चालू करना
-    burstFlowers();
+    // बटन क्लिक होते ही संगीत 100% बजना शुरू होगा क्योंकि यूजर ने स्क्रीन टच की है
     playRealMusic();
-    updateContent(); // पहला नोट और फोटो लोड करें
+    burstFlowers();
+    updateContent();
 }
 
 function playRealMusic() {
     const music = document.getElementById("birthdayMusic");
     if (!musicStarted && music) {
-        music.play().catch(error => console.log("Autoplay blocked: ", error));
-        musicStarted = true;
+        // वॉल्यूम सेट करें और प्ले करें
+        music.volume = 0.7;
+        music.play().then(() => {
+            musicStarted = true;
+        }).catch(error => {
+            console.log("Autoplay failed, trying again on next interaction: ", error);
+        });
     }
 }
 
-// नोट और फोटो को बदलने का फंक्शन
 function updateContent() {
     document.getElementById("noteText").innerHTML = birthdayNotes[currentIdx];
-    // अगर आपने अलग-अलग फोटो अपलोड की हैं तो फोटो भी बदलेगी
     if(birthdayPhotos[currentIdx]) {
         document.getElementById("galleryPhoto").src = birthdayPhotos[currentIdx];
     }
@@ -47,14 +57,16 @@ function updateContent() {
 function nextNote() {
     currentIdx = (currentIdx + 1) % birthdayNotes.length;
     updateContent();
+    playRealMusic(); // सुरक्षा के लिए फिर से प्ले ट्रिगर
 }
 
 function prevNote() {
     currentIdx = (currentIdx - 1 + birthdayNotes.length) % birthdayNotes.length;
     updateContent();
+    playRealMusic();
 }
 
-// 3. रियलिस्टिक 3D फ्लावर और लीफ शावर (लगातार गिरने के लिए)
+// स्क्रीन पर 3D स्टाइल में बड़े फूल, पत्तियां और दिल गिरने का एनीमेशन
 document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => createFlowerElement(false), 250);
 });
