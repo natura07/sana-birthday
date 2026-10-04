@@ -5,30 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Sana! 💖</title>
     <link rel="stylesheet" href="style.css">
-    <!-- उर्दू फॉन्ट के लिए लिंक -->
+    <!-- उर्दू और खूबसूरत फॉन्ट्स के लिए लिंक -->
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
 
-    <!-- 🔒 लॉगिन स्क्रीन -->
+    <!-- 🔒 बेहद खूबसूरत रोमांटिक लॉगिन स्क्रीन -->
     <div id="passwordScreen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #ffeef2 0%, #ffd1dc 50%, #f3e5f5 100%); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: all 0.5s ease;">
         <div class="login-box">
-            <div style="font-size: 45px; margin-bottom: 15px;">🔒</div>
-            <h3 style="color: #d81b60; margin-bottom: 10px; font-size: 22px;">Enter Password</h3>
-            <p style="color: #666; font-size: 14px; margin-bottom: 20px;">This surprise is only for Sana ✨</p>
+            <!-- रोमांटिक विजुअल हार्ट -->
+            <div class="heart-icon">💖</div>
             
-            <input type="password" id="passInput" placeholder="Enter Secret Code..." style="width: 100%; padding: 12px 20px; font-size: 16px; border-radius: 25px; border: 2px solid #ffb6c1; margin-bottom: 20px; text-align: center; outline: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);">
+            <!-- उर्दू और इंग्लिश में रोमांटिक लाइन (बिना किसी गलती के) -->
+            <div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 18px; line-height: 2.3; color: #d81b60; margin-bottom: 5px;">
+                صرف تمہارے لیے، خدا کی دی ہوئی سب سے خوبصورت نعمت...
+            </div>
+            <p style="font-family: 'Poppins', sans-serif; color: #666; font-size: 14px; font-weight: 500; margin-bottom: 25px; line-height: 1.5;">
+                A secret space made only for you. <br>Enter the code to unlock my heart. ✨
+            </p>
             
-            <button onclick="checkPassword()" style="padding: 12px 30px; font-size: 16px; width: 100%;">Unlock Surprise 💖</button>
-            <p id="errorMsg" style="color: #ff4757; font-size: 13px; margin-top: 12px; display: none; font-weight: bold;">❌ Wrong password! Try again.</p>
-        </div>
-    </div>
-
-    <!-- 💘 जादुई तीर-दिल एनीमेशन स्क्रीन (लॉगिन सफल होने पर यह दिखेगी) -->
-    <div id="heartArrowScreen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 240, 245, 0.95); display: none; justify-content: center; align-items: center; z-index: 10000;">
-        <div class="love-animation-container">
-            <div class="animated-heart">❤️</div>
-            <div class="animated-arrow">🏹</div>
+            <!-- इनपुट बॉक्स -->
+            <input type="password" id="passInput" placeholder="Enter Secret Code..." style="width: 100%; padding: 14px 22px; font-size: 16px; border-radius: 30px; border: 2px solid #ffb6c1; margin-bottom: 20px; text-align: center; outline: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);">
+            
+            <!-- सबमिट बटन -->
+            <button onclick="checkPassword()" style="padding: 14px 30px; font-size: 16px; width: 100%;">Unlock My World 🌹</button>
+            <p id="errorMsg" style="color: #ff4757; font-size: 13px; margin-top: 15px; display: none; font-weight: bold;">❌ Wrong code, my love! Try again.</p>
         </div>
     </div>
 
