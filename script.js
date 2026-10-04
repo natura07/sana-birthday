@@ -1,82 +1,42 @@
-let audioContext;
-let musicStarted = false;
+// वेबसाइट खुलते ही लगातार फूल और दिल गिराने का एनीमेशन
+document.addEventListener('DOMContentLoaded', () => {
+    setInterval(createFallingFlowers, 300);
+});
 
-function showSurprise() {
-    // 1. स्क्रीन पर विश मैसेज दिखाने का आपका पुराना कोड
-    document.getElementById("surprise").innerHTML = 
-        "💖 You are a very special person! 💖<br><br>" + 
-        "🎉 Once again, Happy Birthday Sana! 🎉<br>" + 
-        "✨ May all your dreams come true! ✨❤️";
-        
-    // 2. कंफ़ेटी (कागज़ के टुकड़े उड़ाने) का लॉजिक
-    createConfetti();
-
-    // 3. हैप्पी बर्थडे म्यूजिक बजाने का लॉजिक
-    playBirthdayMusic();
-}
-
-function playBirthdayMusic() {
-    if (musicStarted) return;
-    musicStarted = true;
-
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+function createFallingFlowers() {
+    const flower = document.createElement('div');
+    // अलग-अलग सुंदर फूल और दिल के इमोजी
+    const flowerTypes = ['🌹', '🌸', '🌺', '💖', '🌼', '🌷'];
+    flower.innerHTML = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
     
-    // हैप्पी बर्थडे की धुन के नोट्स
-    const notes = [
-        [261.63, 0.3], [261.63, 0.3], [293.66, 0.6], [261.63, 0.6], [349.23, 0.6], [329.63, 1.0],
-        [261.63, 0.3], [261.63, 0.3], [293.66, 0.6], [261.63, 0.6], [392.00, 0.6], [349.23, 1.0]
-    ];
+    flower.style.position = 'fixed';
+    flower.style.top = '-50px';
+    // स्क्रीन पर रैंडम जगह से गिरेंगे
+    flower.style.left = Math.random() * 100 + 'vw';
+    // फूल छोटे-बड़े साइज के होंगे
+    flower.style.fontSize = Math.random() * 20 + 20 + 'px'; 
+    flower.style.zIndex = '1'; // यह कार्ड के पीछे तैरेंगे ताकि टेक्स्ट छुपा न रहे
+    flower.style.pointerEvents = 'none';
+    
+    document.body.appendChild(flower);
 
-    let time = audioContext.currentTime;
+    let posY = -50;
+    let speed = Math.random() * 2 + 1.5; // गिरने की स्पीड
+    let rot = Math.random() * 360; // घूमने का एंगल
+    let rotSpeed = Math.random() * 2 - 1;
 
-    notes.forEach(([frequency, duration]) => {
-        const oscillator = audioContext.createOscillator();
-        const gain = audioContext.createGain();
+    function fall() {
+        posY += speed;
+        rot += rotSpeed;
+        flower.style.top = posY + 'px';
+        flower.style.transform = `rotate(${rot}deg)`;
 
-        oscillator.frequency.value = frequency;
-        oscillator.type = "sine";
-
-        gain.gain.setValueAtTime(0.15, time);
-        gain.gain.exponentialRampToValueAtTime(0.01, time + duration);
-
-        oscillator.connect(gain);
-        gain.connect(audioContext.destination);
-
-        oscillator.start(time);
-        oscillator.stop(time + duration);
-
-        time += duration + 0.05;
-    });
-}
-
-function createConfetti() {
-    for (let i = 0; i < 80; i++) {
-        const confetti = document.createElement('div');
-        confetti.innerHTML = ['🎉', '✨', '💖', '⭐', '🎈'][Math.floor(Math.random() * 5)];
-        confetti.style.position = 'fixed';
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.top = "-30px";
-        confetti.style.fontSize = Math.random() * 20 + 15 + "px";
-        confetti.style.zIndex = "9999";
-        confetti.style.pointerEvents = "none";
-        
-        document.body.appendChild(confetti);
-
-        let positionY = -30;
-        let speed = Math.random() * 3 + 2;
-        let angle = Math.random() * 2;
-
-        function fall() {
-            positionY += speed;
-            confetti.style.top = positionY + "px";
-            confetti.style.transform = `rotate(${positionY + angle}deg)`;
-
-            if (positionY < window.innerHeight) {
-                requestAnimationFrame(fall);
-            } else {
-                confetti.remove();
-            }
+        // स्क्रीन से बाहर जाने पर हटा दें
+        if (posY < window.innerHeight) {
+            requestAnimationFrame(fall);
+        } else {
+            flower.remove();
         }
-        requestAnimationFrame(fall);
     }
+    requestAnimationFrame(fall);
 }
