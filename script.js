@@ -1,49 +1,46 @@
-// उर्दू (खूबसूरत नास्तलीक़ स्टाइल) और इंग्लिश में मिक्स 4 स्पेशल नोट्स
+// उर्दू में खुदा और इंग्लिश में God का इस्तेमाल करते हुए 4 खूबसूरत विश नोट्स
 const birthdayNotes = [
     `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے آپ کی زندگی کا ہر لمحہ خوشیوں سے بھرا ہو، سالگرہ مبارک ثناء! 🎉</div>
-     <div style="font-size: 15px; color: #555;">May Khuda bless every moment of your life with endless happiness. Happy Birthday Sana! 💖</div>`,
+     <div style="font-size: 15px; color: #555;">May God bless every moment of your life with endless happiness. Happy Birthday Sana! 💖</div>`,
     
     `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا آپ کی تمام نیک دعائیں قبول فرمائے اور آپ کو ہمیشہ سلامت رکھے۔ 🤲✨</div>
-     <div style="font-size: 15px; color: #555;">May Khuda accept all your pure wishes and protect you always. Beautiful day ahead! ⭐</div>`,
+     <div style="font-size: 15px; color: #555;">May God accept all your pure wishes and protect you always. Beautiful day ahead! ⭐</div>`,
     
     `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">مسکراتی رہو آپ ہمیشہ، یہی دعا ہے ہماری۔ سالگرہ بہت بہت مبارک ہو! 🌹❤️</div>
-     <div style="font-size: 15px; color: #555;">Keep smiling always, that's my only prayer to Khuda for you. Have a wonderful birthday!</div>`,
+     <div style="font-size: 15px; color: #555;">Keep smiling always, that's my only prayer to God for you. Have a wonderful birthday!</div>`,
     
-    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے یہ سال آپ کی زندگی میں کامیابی، اچھی صحت اور ڈھیروں برکتیں لائے۔ 🎈</div>
-     <div style="font-size: 15px; color: #555;">May Khuda fill this new year of your life with success, great health, and barakah!</div>`
+    `<div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 20px; line-height: 2.2; margin-bottom: 10px;">خدا کرے یہ سال آپ کی زندگی में कामयाबी، अच्छी सेहत और ढेरों برکتیں لائے। 🎈</div>
+     <div style="font-size: 15px; color: #555;">May God fill this new year of your life with success, great health, and barakah!</div>`
 ];
 
-// अगर भविष्य में आपके पास और तस्वीरें हों, तो यहाँ 'Sana2.jpg', 'Sana3.jpg' लिख सकते हैं। अभी यह आपकी पहली फोटो को ही लोड रखेगा।
-const birthdayPhotos = [
-    "Sana.jpg", 
-    "Sana.jpg", 
-    "Sana.jpg",
-    "Sana.jpg"
-];
-
+const birthdayPhotos = ["Sana.jpg", "Sana.jpg", "Sana.jpg", "Sana.jpg"];
 let currentIdx = 0;
 let musicStarted = false;
 
 function showSurprise() {
-    const surpriseDiv = document.getElementById("surprise");
-    surpriseDiv.style.display = "block";
-    
-    // बटन क्लिक होते ही संगीत 100% बजना शुरू होगा क्योंकि यूजर ने स्क्रीन टच की है
-    playRealMusic();
+    document.getElementById("surprise").style.display = "block";
+    playRealMusic(); // बटन दबते ही गाना बजना शुरू होगा
     burstFlowers();
     updateContent();
 }
 
 function playRealMusic() {
     const music = document.getElementById("birthdayMusic");
-    if (!musicStarted && music) {
-        // वॉल्यूम सेट करें और प्ले करें
-        music.volume = 0.7;
-        music.play().then(() => {
-            musicStarted = true;
-        }).catch(error => {
-            console.log("Autoplay failed, trying again on next interaction: ", error);
-        });
+    if (music) {
+        music.muted = false; // अनम्यूट पक्का करें
+        // ब्राउज़र रिस्ट्रिक्शन को बायपास करने का सबसे बेस्ट तरीका
+        let playPromise = music.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                musicStarted = true;
+            }).catch(error => {
+                console.log("प्लेबैक में दिक्कत आई, दोबारा कोशिश जारी है...");
+                // बैकअप तरीका: अगर डायरेक्ट प्ले न हो, तो वॉल्यूम फुल करके फिर से ट्रिगर करें
+                music.volume = 1.0;
+                music.play();
+            });
+        }
     }
 }
 
@@ -57,7 +54,7 @@ function updateContent() {
 function nextNote() {
     currentIdx = (currentIdx + 1) % birthdayNotes.length;
     updateContent();
-    playRealMusic(); // सुरक्षा के लिए फिर से प्ले ट्रिगर
+    playRealMusic(); // पक्का करने के लिए कि गाना चलता रहे
 }
 
 function prevNote() {
@@ -66,7 +63,7 @@ function prevNote() {
     playRealMusic();
 }
 
-// स्क्रीन पर 3D स्टाइल में बड़े फूल, पत्तियां और दिल गिरने का एनीमेशन
+// 3D स्टाइल में बड़े फूल और दिल गिरने का एनीमेशन
 document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => createFlowerElement(false), 250);
 });
@@ -101,10 +98,8 @@ function createFlowerElement(isBurst) {
 
     let posY = !isBurst ? -50 : window.innerHeight * 0.6;
     let posX = !isBurst ? parseFloat(item.style.left) : 50;
-    
     let speedY = !isBurst ? Math.random() * 2 + 2 : Math.random() * -10 - 5;
     let speedX = !isBurst ? Math.sin(posY) * 0.5 : (Math.random() * 12 - 6);
-    
     let rot = Math.random() * 360;
     let rotSpeed = Math.random() * 4 - 2;
 
