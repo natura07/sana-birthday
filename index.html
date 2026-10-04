@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Sana ❤️</title>
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sana! 💖</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="balloon">🎈</div>
-    <div class="balloon">🎈</div>
-    <div class="balloon">🎈</div>
 
-    <h1>🎂 Happy Birthday 🎂</h1>
-    <h2>Sana Khan ❤️</h2>
+    <div class="container">
+        <h1>Happy Birthday</h1>
+        <h2>Sana ✨</h2>
+        
+        <!-- मुख्य फोटो जो शुरुआत में दिखेगी -->
+        <div class="photo-box">
+            <img src="Sana.jpg" alt="Sana" class="sana-photo" id="mainPhoto">
+        </div>
 
-    <img src="./Sana.jpg" alt="Sana" class="sana-photo">
+        <p class="message">यहाँ आपके लिए एक बहुत ही खास सरप्राइज इंतज़ार कर रहा है। नीचे दिए गए बटन पर क्लिक करें! ✨</p>
+        
+        <!-- सरप्राइज बटन -->
+        <button onclick="showSurprise()">🎉 Open Surprise</button>
+        
+        <!-- सरप्राइज एरिया: बटन दबाने पर यह खुल जाएगा -->
+        <div id="surprise" style="display: none;">
+            
+            <!-- 1. फोटो गैलरी (1 से ज़्यादा फोटो स्लाइड होने के लिए) -->
+            <div class="gallery-container">
+                <img id="galleryPhoto" src="Sana.jpg" alt="Sana Birthday" class="gallery-photo">
+            </div>
 
-    <p class="message">
-      Wishing you a very Happy Birthday! 💖
-      May your day be filled with happiness,
-      beautiful moments and lots of smiles. ✨
-    </p>
+            <!-- 2. मल्टीपल नोट्स (एक से ज़्यादा सुंदर संदेश) -->
+            <div class="notes-container">
+                <div class="note-card active-note" id="noteText">
+                    💖 You are a very special person in my life!
+                </div>
+                <div class="note-controls">
+                    <button class="nav-btn" onclick="prevNote()">◀ Prev</button>
+                    <button class="nav-btn" onclick="nextNote()">Next ▶</button>
+                </div>
+            </div>
 
-    <div class="cake">🎂</div>
+        </div>
+    </div>
 
-    <button onclick="showSurprise()">🎁 Click for a Surprise</button>
-    <p id="surprise"></p>
-  </div>
+    <!-- 3. रियल सॉन्ग के लिए ऑडियो (हमने एक सुंदर रोमांटिक इंस्ट्रूमेंटल ट्यून जोड़ी है) -->
+    <audio id="birthdayMusic" src="https://soundhelix.com" loop></audio>
 
-  <script src="./script.js"></script>
 </body>
+<script src="script.js"></script>
 </html>
