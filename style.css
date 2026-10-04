@@ -16,22 +16,78 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
+    perspective: 1000px;
 }
 
-/* मुख्य सफ़ेद कार्ड को सबसे आकर्षक बनाने का कोड */
+.login-box {
+    width: 85%;
+    max-width: 360px;
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(255, 71, 87, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    transform: scale(0.9);
+    opacity: 0;
+    animation: zoomInBox 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 2px solid #ffb6c1;
+    margin-bottom: 20px;
+    text-align: center;
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+input[type="password"]:focus {
+    border-color: #ff4757;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.2);
+}
+
+/* 💘 तीर-दिल एनीमेशन कंटेनर */
+.love-animation-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animated-heart {
+    font-size: 100px;
+    animation: heartBeat 0.8s infinite alternate;
+}
+
+.animated-arrow {
+    font-size: 60px;
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    transform: rotate(45deg);
+    animation: shootArrow 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 📱 मुख्य कंटेनर */
 .container {
     width: 90%;
     max-width: 420px;
     padding: 40px 25px;
     text-align: center;
-    /* एकदम चमकदार, फ्रॉस्टेड वाइट ग्लास इफेक्ट */
     background: rgba(255, 255, 255, 0.92); 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 30px;
-    /* जादुई गुलाबी चमक (Glowing Neon Box Shadow) */
     box-shadow: 0 0 25px rgba(255, 71, 87, 0.25), 0 20px 45px rgba(216, 27, 96, 0.2);
-    /* चमकदार बॉर्डर जो इसे आकर्षक बनाएगा */
     border: 3px solid rgba(255, 105, 180, 0.6); 
     position: relative;
     z-index: 10;
@@ -57,7 +113,6 @@ h2 {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    /* फोटो के चारों तरफ गुलाबी रिंग */
     border: 5px solid #ff6b81;
     box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
     margin: 15px 0;
@@ -89,17 +144,44 @@ button:hover {
     box-shadow: 0 12px 30px rgba(255, 71, 87, 0.7);
 }
 
-/* नीचे खुला हुआ सरप्राइज मैसेज बॉक्स - अब यह और आकर्षक चमकेगा */
 #surprise {
     margin-top: 25px;
     font-size: 18px;
     font-weight: bold;
     color: #d81b60;
     line-height: 1.6;
-    /* हल्का गुलाबी चमकदार बैकग्राउंड */
     background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
     padding: 20px;
     border-radius: 20px;
     border: 2px dashed #ff4757;
     box-shadow: inset 0 2px 10px rgba(255, 71, 87, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* 🎬 एनीमेशन के कीफ्रेम्स */
+@keyframes zoomInBox {
+    to { transform: scale(1); opacity: 1; }
+}
+
+.shake-animation {
+    animation: shakeBox 0.4s ease-in-out;
+}
+
+@keyframes shakeBox {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+/* दिल धड़कने का एनीमेशन */
+@keyframes heartBeat {
+    from { transform: scale(1); text-shadow: 0 0 10px rgba(255,0,0,0.3); }
+    to { transform: scale(1.2); text-shadow: 0 0 25px rgba(255,0,0,0.6); }
+}
+
+/* 🏹 तीर चलने और दिल को आर-पार करने का एनीमेशन */
+@keyframes shootArrow {
+    0% { top: -200px; left: -200px; transform: scale(0.5) rotate(45deg); opacity: 0; }
+    50% { opacity: 1; }
+    70% { top: 30px; left: 30px; transform: scale(1.3) rotate(45deg); } /* दिल के बीच में टक्कर */
+    100% { top: 150px; left: 150px; transform: scale(1) rotate(45deg); } /* पार निकल गया */
 }
