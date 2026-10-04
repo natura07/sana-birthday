@@ -5,11 +5,13 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://unsplash.com');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    /* सुंदर पेस्टल पिंक बैकग्राउंड और 3D फ्लावर/हार्ट जैसी फील देने वाला पैटर्न */
+    background-color: #ffeef2;
+    background-image: 
+        radial-gradient(#ffb6c1 20%, transparent 20%),
+        radial-gradient(#ffb6c1 20%, transparent 20%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
     font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
@@ -22,81 +24,87 @@ body {
     max-width: 450px;
     padding: 40px 25px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(5px);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(255, 71, 87, 0.15);
-    border: 1px solid rgba(255, 182, 193, 0.5);
+    background: rgba(255, 255, 255, 0.92); /* हल्का पारदर्शी वाइट कार्ड */
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+    border: 2px solid #ffb6c1;
     position: relative;
 }
 
 h1 {
     color: #ff4757;
-    font-size: 36px;
+    font-size: 34px;
     margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     animation: bounce 1.5s infinite;
 }
 
 h2 {
     color: #ff6b81;
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 15px;
 }
 
 .sana-photo {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid white;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border: 4px solid #fff;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
     margin: 15px 0;
 }
 
 .message {
     color: #555;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
 .cake {
-    font-size: 70px;
+    font-size: 65px;
     margin: 15px 0;
     animation: cake 1.5s infinite alternate;
 }
 
 button {
     border: none;
-    padding: 15px 30px;
+    padding: 14px 28px;
     border-radius: 30px;
     background: linear-gradient(45deg, #ff4757, #ff6b81);
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(255, 71, 87, 0.3);
-    transition: transform 0.2s;
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+    transition: all 0.3s ease;
 }
 
 button:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
 }
 
 #surprise {
     margin-top: 25px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    color: #ff4757;
+    color: #ff2a6d;
     line-height: 1.6;
+    background: #fff0f5;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px dashed #ffb6c1;
 }
 
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
 }
 
 @keyframes cake {
     from { transform: scale(1); }
-    to { transform: scale(1.1); }
+    to { transform: scale(1.08); }
 }
