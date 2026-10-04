@@ -5,36 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Sana! 💖</title>
     <link rel="stylesheet" href="style.css">
-    <!-- उर्दू और खूबसूरत फॉन्ट्स के लिए लिंक -->
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
 
-    <!-- 🔒 बेहद खूबसूरत रोमांटिक लॉगिन स्क्रीन -->
-    <div id="passwordScreen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #ffeef2 0%, #ffd1dc 50%, #f3e5f5 100%); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: all 0.5s ease;">
+    <!-- 🔒 रील जैसा मॉडर्न लॉगिन स्क्रीन -->
+    <div id="passwordScreen" class="auth-wrapper">
+        <!-- बैकग्राउंड में घूमने वाली लिक्विड लाइट्स (जैसे रील में है) -->
+        <div class="bg-blur-circle pink-circle"></div>
+        <div class="bg-blur-circle purple-circle"></div>
+
         <div class="login-box">
-            <!-- रोमांटिक विजुअल हार्ट -->
-            <div class="heart-icon">💖</div>
+            <div class="brand-heart">💖</div>
             
-            <!-- उर्दू और इंग्लिश में रोमांटिक लाइन (बिना किसी गलती के) -->
-            <div style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 18px; line-height: 2.3; color: #d81b60; margin-bottom: 5px;">
+            <div class="urdu-title" style="font-family: 'Noto Nastaliq Urdu', serif; direction: rtl;">
                 صرف تمہارے لیے، خدا کی دی ہوئی سب سے خوبصورت نعمت...
             </div>
-            <p style="font-family: 'Poppins', sans-serif; color: #666; font-size: 14px; font-weight: 500; margin-bottom: 25px; line-height: 1.5;">
-                A secret space made only for you. <br>Enter the code to unlock my heart. ✨
-            </p>
+            <p class="english-subtitle">A secret space made only for you.<br>Enter the code to unlock my heart. ✨</p>
             
-            <!-- इनपुट बॉक्स -->
-            <input type="password" id="passInput" placeholder="Enter Secret Code..." style="width: 100%; padding: 14px 22px; font-size: 16px; border-radius: 30px; border: 2px solid #ffb6c1; margin-bottom: 20px; text-align: center; outline: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);">
+            <!-- पासवर्ड इनपुट एरिया -->
+            <div class="input-wrapper">
+                <input type="password" id="passInput" placeholder="Enter Secret Code...">
+                <span class="input-line"></span>
+            </div>
             
-            <!-- सबमिट बटन -->
-            <button onclick="checkPassword()" style="padding: 14px 30px; font-size: 16px; width: 100%;">Unlock My World 🌹</button>
-            <p id="errorMsg" style="color: #ff4757; font-size: 13px; margin-top: 15px; display: none; font-weight: bold;">❌ Wrong code, my love! Try again.</p>
+            <button onclick="checkPassword()" class="btn-unlock">Unlock My World 🌹</button>
+            <p id="errorMsg" class="error-text">❌ Wrong code, my love! Try again.</p>
         </div>
     </div>
 
-    <!-- 📱 मुख्य कंटेंट कंटेनर -->
-    <div class="container" id="mainContainer" style="filter: blur(5px); opacity: 0.3; transition: all 0.5s ease;">
+    <!-- 📱 मुख्य कंटेंट कंटेनर (सफल लॉगिन के बाद दिखेगा) -->
+    <div class="container" id="mainContainer" style="display: none;">
         <h1>Happy Birthday</h1>
         <h2>Sana ✨</h2>
         
@@ -44,7 +45,7 @@
 
         <p class="message">Your special birthday surprise is waiting below! ✨</p>
         
-        <button onclick="showSurprise()">🎉 Open Surprise</button>
+        <button onclick="showSurprise()" class="btn-surprise">🎉 Open Surprise</button>
         
         <div id="surprise" style="display: none;">
             <div class="gallery-container">
@@ -54,8 +55,8 @@
             <div class="notes-container" style="margin-top: 20px;">
                 <div class="note-card active-note" id="noteText"></div>
                 <div class="note-controls" style="margin-top: 15px; display: flex; justify-content: space-between;">
-                    <button class="nav-btn" onclick="prevNote()" style="padding: 8px 18px; font-size: 14px;">◀ Prev</button>
-                    <button class="nav-btn" onclick="nextNote()" style="padding: 8px 18px; font-size: 14px;">Next ▶</button>
+                    <button class="nav-btn" onclick="prevNote()">◀ Prev</button>
+                    <button class="nav-btn" onclick="nextNote()">Next ▶</button>
                 </div>
             </div>
         </div>
